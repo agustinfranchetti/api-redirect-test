@@ -34,15 +34,20 @@ export class ApiController {
       if (sessionKey) {
         console.log(`Data for scope: ${scopeId}, session: ${sessionKey}`);
         // If sessionKey is provided, fetch data for a specific chat session.
-        return `Data for scope: ${scopeId}, session: ${sessionKey}`;
+        response
+          .status(200)
+          .send(`Data for scope: ${scopeId}, session: ${sessionKey}`);
+        return;
       } else {
         console.log(`General data for scope: ${scopeId}`);
         // If sessionKey is not provided, perhaps you want to fetch general data for the scope.
-        return `General data for scope: ${scopeId}`;
+        response.status(200).send(`General data for scope: ${scopeId}`);
+        return;
       }
     } else {
       // This is for the main domain logic (rizt.dev/v1)
-      return 'Main domain response';
+      response.status(200).send('No subdomain data');
+      return;
     }
   }
 }

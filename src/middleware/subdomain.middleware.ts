@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from 'express';
 @Injectable()
 export class SubdomainMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
-    const [subdomain, ...domainParts] = req.hostname.split('.');
+    const [subdomain] = req.hostname.split('.');
 
     // Assuming subdomains are of format {string}-{random hash}.rizt.dev
     const [string, hash] = subdomain.split('-');
